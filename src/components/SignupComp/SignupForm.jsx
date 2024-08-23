@@ -63,8 +63,8 @@ const SignupForm = () => {
   return (
     <div className="py-8">
       <div className="container mx-auto">
-        <div className="flex flex-col items-center max-w-full p-5 mt-20 shadow-2xl md:flex-row">
-          <div className="w-full mt-4 md:w-4/8 md:mt-0">
+        <div className="flex flex-col items-center p-5 mt-20 shadow-2xl md:flex-row">
+          <div className="w-full mt-4 md:w-1/2 md:mt-0">
             <img src={SignupImg} alt="signup" className="w-full h-auto" />
           </div>
           <div className="w-full mt-4 md:w-1/2 md:mt-0">
