@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SignupImg from "../../assets/img/signup.png";
 import CustomButton from "../helper/CustomButton";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { login } from "../../api/api"; 
 
 const LoginForm = () => {
@@ -45,19 +45,15 @@ const LoginForm = () => {
     <div className="py-8">
       <div className="container mx-auto">
         <div className="flex flex-col items-center p-5 mt-20 shadow-2xl md:flex-row">
-         
           <div className="w-full mt-4 md:w-1/2 md:mt-0">
             <img src={SignupImg} alt="Login" className="w-full h-auto" />
           </div>
 
-         
           <div className="w-full mt-4 md:w-1/2 md:mt-0">
-         
             <h2 className="mb-6 text-3xl font-bold text-center md:text-left">
               Login
             </h2>
 
-          
             {success && (
               <div className="p-4 mb-4 text-green-800 bg-green-200 rounded-md">
                 {success}
@@ -93,28 +89,25 @@ const LoginForm = () => {
                 />
               </div>
 
-           
               <div className="flex justify-center">
                 <CustomButton type="submit" label="Login" />
               </div>
 
-              
               <div className="flex justify-center mt-4">
-                <a
-                  href="/forgot-password"
+                <NavLink
+                  to="/forgot-password"
                   className="text-blue-500 hover:underline"
                 >
                   Forgot Password?
-                </a>
+                </NavLink>
               </div>
 
-           
               <div className="flex justify-center mt-2">
                 <p>
                   Don't have an account?{" "}
-                  <a href="/signup" className="text-blue-500 hover:underline">
+                  <NavLink to="/signup" className="text-blue-500 hover:underline">
                     Sign Up
-                  </a>
+                  </NavLink>
                 </p>
               </div>
             </form>

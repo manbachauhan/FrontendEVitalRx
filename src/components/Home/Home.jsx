@@ -12,12 +12,12 @@ const Home = () => {
           features, manage your account, and more.
         </p>
         <div className="flex justify-center">
-          <a
-            href="/"
+          <NavLink
+            to="/"
             className="px-6 py-3 text-white transition duration-300 bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700"
           >
             Get Started
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
