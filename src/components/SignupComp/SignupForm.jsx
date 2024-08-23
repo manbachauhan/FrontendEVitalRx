@@ -69,7 +69,7 @@ const SignupForm = () => {
           </div>
           <div className="w-full mt-4 md:w-1/2 md:mt-0">
             <h2 className="mb-6 text-3xl font-bold text-center md:text-left">
-              Explore the World
+              Create an account
             </h2>
             {successMessage && (
               <div className="p-4 mb-4 text-green-800 bg-green-200 rounded-md">
