@@ -19,8 +19,8 @@ This is the frontend for the full-stack project built with React.js and Tailwind
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo/frontend
+https://github.com/manbachauhan/FrontendEVitalRx.git
+cd your-repo/FrontendEVitalRx
 ```
 
 ### 2. Install Dependencies
