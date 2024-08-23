@@ -27,10 +27,10 @@ cd your-repo/FrontendEVitalRx
 ```bash
 npm install
 ```
-### 3. Environment Variables
- - Create a .env file in the frontend directory with the following variable
+### 3. Backend API configuration
+ - Create a api file in the frontend directory with the following variable
 ```bash
-REACT_APP_API_URL=your_backend_api_url
+BASE_URL=your_backend_api_url
 ```
 ### 4. Run the Frontend Server
 
