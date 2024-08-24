@@ -21,8 +21,8 @@ const OtpVerify = () => {
       console.log("OTP verification successful");
       setSuccessMessage("OTP verified successfully!"); 
       setErrorMessage(""); 
-      navigate("/dashboard"); 
       window.location.reload();
+      navigate("/"); 
     } catch (error) {
       console.error("OTP verification failed:", error);
       setSuccessMessage(""); 

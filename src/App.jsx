@@ -9,7 +9,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import VerifyResetPassword from "./components/OTP/VerifyResetPassword";
 import ProfilePage from "./pages/ProfilePage";
-import Dashboard from './components/Home/Dashboard'
+
 import Page404 from "./pages/Page404";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
@@ -22,11 +22,11 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={
+          {/* <Route path="/dashboard" element={
              <ProtectedRoutes>
              <Dashboard/>
             </ProtectedRoutes>
-          }/>
+          }/> */}
           <Route path="/verifyemail" element={<OtpVerify />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/verify-otp" element={<VerifyResetPassword />} />

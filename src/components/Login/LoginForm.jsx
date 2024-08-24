@@ -26,7 +26,7 @@ const LoginForm = () => {
       if (result.success) {
         setSuccess("Login successful!"); 
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("/");
           window.location.reload();
          
         }, 1);
