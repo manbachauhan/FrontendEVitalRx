@@ -7,6 +7,7 @@ import CustomButton from "../helper/CustomButton";
 import { signup } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import LoadingOverlay from "../Loading/LoadingOverlay";
 
 // Yup schema for validation
 const schema = yup.object().shape({
@@ -25,6 +26,8 @@ const schema = yup.object().shape({
 const SignupForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -37,31 +40,37 @@ const SignupForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log("data", data);
+    setLoading(true);
     try {
-      const result = await signup(data); 
+      const result = await signup(data);
       console.log("Signup successful:", result);
-      setSuccessMessage("You have successfully signed up!"); 
-      setErrorMessage(""); 
-      navigate("/verifyemail"); 
-      reset(); 
-    } catch (error) {
-      setSuccessMessage(""); 
+      setSuccessMessage("You have successfully signed up!");
+      setErrorMessage("");
+      navigate("/verifyemail");
+      reset();
+    } 
+    catch (error) 
+    {
+      setSuccessMessage("");
       if (
         error.response &&
         error.response.data.message === "User already exists"
       ) {
-        setErrorMessage("User already exists. Please log in."); 
-        navigate("/login"); 
+        setErrorMessage("User already exists. Please log in.");
+        navigate("/login");
       } else {
-        setErrorMessage("Signup failed: Please try again."); 
+        setErrorMessage("Signup failed: Please try again.");
       }
-      console.error("Signup failed:", error.message);
+      // console.error("Signup failed:", error.message);
+    } 
+    finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="py-8">
+      {loading && <LoadingOverlay />}
       <div className="container mx-auto">
         <div className="flex flex-col items-center p-5 mt-20 shadow-2xl md:flex-row">
           <div className="w-full mt-4 md:w-1/2 md:mt-0">

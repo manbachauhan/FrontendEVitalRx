@@ -2,42 +2,46 @@ import React, { useState } from "react";
 import SignupImg from "../../assets/img/signup.png";
 import CustomButton from "../helper/CustomButton";
 import { NavLink, useNavigate } from "react-router-dom";
-import { login } from "../../api/api"; 
+import { login } from "../../api/api";
+import LoadingOverlay from "../Loading/LoadingOverlay";
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(""); 
+  const [errormsg, seterrormsg] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const handleSubmit = async (e) => {
-    console.log("e",email)
     e.preventDefault();
-    setSuccess(""); 
-    setError(""); 
+    setSuccess("");
+    seterrormsg("");
+    setLoading(true);
 
     try {
-      const result = await login(email,password); 
-      
+      const result = await login(email, password);
+
       if (result.success) {
-        setSuccess("Login successful!"); 
+        setSuccess("Login successful!");
         setTimeout(() => {
           navigate("/");
           window.location.reload();
-         
-        }, 1);
+        }, 1000);
       } else {
-        setError(result.message || "Login failed. Please try again."); 
+        seterrormsg(result.message || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Login failed:", error);
-      setError(
+      seterrormsg(
         error.message || "An unexpected error occurred. Please try again."
-      ); 
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,9 +63,9 @@ const LoginForm = () => {
                 {success}
               </div>
             )}
-            {error && (
+            {errormsg && (
               <div className="p-4 mb-4 text-red-800 bg-red-200 rounded-md">
-                {error}
+                {errormsg}
               </div>
             )}
 
@@ -105,7 +109,10 @@ const LoginForm = () => {
               <div className="flex justify-center mt-2">
                 <p>
                   Don't have an account?{" "}
-                  <NavLink to="/signup" className="text-blue-500 hover:underline">
+                  <NavLink
+                    to="/signup"
+                    className="text-blue-500 hover:underline"
+                  >
                     Sign Up
                   </NavLink>
                 </p>
@@ -114,6 +121,7 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
+      {loading && <LoadingOverlay />}
     </div>
   );
 };
